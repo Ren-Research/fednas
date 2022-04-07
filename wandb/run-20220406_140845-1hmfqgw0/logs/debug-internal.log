@@ -1,0 +1,31 @@
+2022-04-06 14:08:46,961 INFO    MainThread:61738 [internal.py:wandb_internal():92] W&B internal server running at pid: 61738, started at: 2022-04-06 14:08:46.961064
+2022-04-06 14:08:46,963 INFO    WriterThread:61738 [datastore.py:open_for_write():77] open: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_140845-1hmfqgw0/run-1hmfqgw0.wandb
+2022-04-06 14:08:46,965 DEBUG   SenderThread:61738 [sender.py:send():235] send: header
+2022-04-06 14:08:46,965 DEBUG   SenderThread:61738 [sender.py:send():235] send: run
+2022-04-06 14:08:47,126 DEBUG   HandlerThread:61738 [handler.py:handle_request():141] handle_request: check_version
+2022-04-06 14:08:47,133 INFO    SenderThread:61738 [dir_watcher.py:__init__():169] watching files in: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_140845-1hmfqgw0/files
+2022-04-06 14:08:47,134 INFO    SenderThread:61738 [sender.py:_start_run_threads():812] run started: 1hmfqgw0 with start time 1649279325
+2022-04-06 14:08:47,134 DEBUG   SenderThread:61738 [sender.py:send():235] send: summary
+2022-04-06 14:08:47,134 INFO    SenderThread:61738 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-06 14:08:47,134 DEBUG   SenderThread:61738 [sender.py:send_request():249] send_request: check_version
+2022-04-06 14:08:47,304 DEBUG   HandlerThread:61738 [handler.py:handle_request():141] handle_request: run_start
+2022-04-06 14:08:49,510 INFO    Thread-7  :61738 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_140845-1hmfqgw0/files/wandb-summary.json
+2022-04-06 14:08:51,465 DEBUG   HandlerThread:61738 [meta.py:__init__():37] meta init
+2022-04-06 14:08:51,465 DEBUG   HandlerThread:61738 [meta.py:__init__():51] meta init done
+2022-04-06 14:08:51,465 DEBUG   HandlerThread:61738 [meta.py:probe():211] probe
+2022-04-06 14:08:51,471 DEBUG   HandlerThread:61738 [git.py:repo():33] git repository is invalid
+2022-04-06 14:08:51,473 DEBUG   HandlerThread:61738 [meta.py:_save_pip():55] save pip
+2022-04-06 14:08:51,478 DEBUG   HandlerThread:61738 [meta.py:_save_pip():69] save pip done
+2022-04-06 14:08:51,479 DEBUG   HandlerThread:61738 [meta.py:probe():249] probe done
+2022-04-06 14:08:51,488 DEBUG   SenderThread:61738 [sender.py:send():235] send: files
+2022-04-06 14:08:51,488 INFO    SenderThread:61738 [sender.py:_save_file():947] saving file wandb-metadata.json with policy now
+2022-04-06 14:08:51,497 DEBUG   HandlerThread:61738 [handler.py:handle_request():141] handle_request: stop_status
+2022-04-06 14:08:51,498 DEBUG   SenderThread:61738 [sender.py:send_request():249] send_request: stop_status
+2022-04-06 14:08:51,549 INFO    Thread-7  :61738 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_140845-1hmfqgw0/files/requirements.txt
+2022-04-06 14:08:51,549 INFO    Thread-7  :61738 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_140845-1hmfqgw0/files/output.log
+2022-04-06 14:08:51,550 INFO    Thread-7  :61738 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_140845-1hmfqgw0/files/wandb-metadata.json
+2022-04-06 14:08:51,631 DEBUG   SenderThread:61738 [sender.py:send():235] send: telemetry
+2022-04-06 14:08:52,461 INFO    Thread-11 :61738 [upload_job.py:push():137] Uploaded file /var/folders/4b/njh3297145v5b_k802dt0_h00000gn/T/tmpvkbml3g3wandb/19kzzsw0-wandb-metadata.json
+2022-04-06 14:08:53,551 INFO    Thread-7  :61738 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_140845-1hmfqgw0/files/output.log
+2022-04-06 14:08:55,561 INFO    Thread-7  :61738 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_140845-1hmfqgw0/files/output.log
+2022-04-06 14:08:57,564 INFO    Thread-7  :61738 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_140845-1hmfqgw0/files/output.log

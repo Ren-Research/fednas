@@ -1,0 +1,24 @@
+2022-04-06 00:29:31,380 INFO    MainThread:55035 [wandb_setup.py:_flush():75] Loading settings from /Users/bingqianlu/.config/wandb/settings
+2022-04-06 00:29:31,381 INFO    MainThread:55035 [wandb_setup.py:_flush():75] Loading settings from /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/settings
+2022-04-06 00:29:31,381 INFO    MainThread:55035 [wandb_setup.py:_flush():75] Loading settings from environment variables: {}
+2022-04-06 00:29:31,381 INFO    MainThread:55035 [wandb_setup.py:_flush():75] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program': '/Users/bingqianlu/Desktop/fednas/FedNAS-master/main.py'}
+2022-04-06 00:29:31,381 INFO    MainThread:55035 [wandb_init.py:_log_setup():438] Logging user logs to /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_002931-n14r21tt/logs/debug.log
+2022-04-06 00:29:31,381 INFO    MainThread:55035 [wandb_init.py:_log_setup():439] Logging internal logs to /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220406_002931-n14r21tt/logs/debug-internal.log
+2022-04-06 00:29:31,381 INFO    MainThread:55035 [wandb_init.py:init():472] calling init triggers
+2022-04-06 00:29:31,381 INFO    MainThread:55035 [wandb_init.py:init():475] wandb.init called with sweep_config: {}
+config: {'gpu': 0, 'stage': 'search', 'model': 'resnet', 'dataset': 'cifar10', 'partition': 'homo', 'batch_size': 128, 'wd': 0.001, 'epochs': 5, 'local_points': 5000, 'client_number': 16, 'comm_round': 50, 'init_channels': 16, 'layers': 8, 'learning_rate': 0.025, 'learning_rate_min': 0.001, 'momentum': 0.9, 'weight_decay': 0.0003, 'arch_learning_rate': 0.0003, 'arch_weight_decay': 0.001, 'grad_clip': 5, 'lambda_train_regularizer': 1, 'lambda_valid_regularizer': 1, 'report_freq': 10, 'tau_max': 10, 'tau_min': 1, 'auxiliary': False, 'arch': 'FedNAS_V1', 'frequency_of_the_test': 1}
+2022-04-06 00:29:31,382 INFO    MainThread:55035 [wandb_init.py:init():525] starting backend
+2022-04-06 00:29:31,382 INFO    MainThread:55035 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2022-04-06 00:29:31,395 INFO    MainThread:55035 [backend.py:ensure_launched():219] starting backend process...
+2022-04-06 00:29:31,404 INFO    MainThread:55035 [backend.py:ensure_launched():224] started backend process with pid: 55055
+2022-04-06 00:29:31,407 INFO    MainThread:55035 [wandb_init.py:init():534] backend started and connected
+2022-04-06 00:29:31,417 INFO    MainThread:55035 [wandb_init.py:init():598] updated telemetry
+2022-04-06 00:29:31,419 INFO    MainThread:55035 [wandb_init.py:init():629] communicating run to backend with 30 second timeout
+2022-04-06 00:29:32,721 INFO    MainThread:55035 [wandb_run.py:_on_init():1922] communicating current version
+2022-04-06 00:29:32,787 INFO    MainThread:55035 [wandb_run.py:_on_init():1926] got version response 
+2022-04-06 00:29:32,787 INFO    MainThread:55035 [wandb_init.py:init():660] starting run threads in backend
+2022-04-06 00:29:35,687 INFO    MainThread:55035 [wandb_run.py:_console_start():1896] atexit reg
+2022-04-06 00:29:35,687 INFO    MainThread:55035 [wandb_run.py:_redirect():1769] redirect: SettingsConsole.REDIRECT
+2022-04-06 00:29:35,688 INFO    MainThread:55035 [wandb_run.py:_redirect():1774] Redirecting console.
+2022-04-06 00:29:35,689 INFO    MainThread:55035 [wandb_run.py:_redirect():1830] Redirects installed.
+2022-04-06 00:29:35,690 INFO    MainThread:55035 [wandb_init.py:init():685] run started, returning control to user process

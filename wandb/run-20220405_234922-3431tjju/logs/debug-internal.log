@@ -1,0 +1,29 @@
+2022-04-05 23:49:23,481 INFO    MainThread:54670 [internal.py:wandb_internal():92] W&B internal server running at pid: 54670, started at: 2022-04-05 23:49:23.481384
+2022-04-05 23:49:23,483 INFO    WriterThread:54670 [datastore.py:open_for_write():77] open: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220405_234922-3431tjju/run-3431tjju.wandb
+2022-04-05 23:49:23,485 DEBUG   SenderThread:54670 [sender.py:send():235] send: header
+2022-04-05 23:49:23,485 DEBUG   SenderThread:54670 [sender.py:send():235] send: run
+2022-04-05 23:49:23,678 DEBUG   HandlerThread:54670 [handler.py:handle_request():141] handle_request: check_version
+2022-04-05 23:49:23,683 INFO    SenderThread:54670 [dir_watcher.py:__init__():169] watching files in: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220405_234922-3431tjju/files
+2022-04-05 23:49:23,683 INFO    SenderThread:54670 [sender.py:_start_run_threads():812] run started: 3431tjju with start time 1649227762
+2022-04-05 23:49:23,683 DEBUG   SenderThread:54670 [sender.py:send():235] send: summary
+2022-04-05 23:49:23,683 INFO    SenderThread:54670 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-04-05 23:49:23,684 DEBUG   SenderThread:54670 [sender.py:send_request():249] send_request: check_version
+2022-04-05 23:49:23,780 DEBUG   HandlerThread:54670 [handler.py:handle_request():141] handle_request: run_start
+2022-04-05 23:49:25,588 INFO    Thread-7  :54670 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220405_234922-3431tjju/files/wandb-summary.json
+2022-04-05 23:49:27,363 DEBUG   HandlerThread:54670 [meta.py:__init__():37] meta init
+2022-04-05 23:49:27,367 DEBUG   HandlerThread:54670 [meta.py:__init__():51] meta init done
+2022-04-05 23:49:27,368 DEBUG   HandlerThread:54670 [meta.py:probe():211] probe
+2022-04-05 23:49:27,376 DEBUG   HandlerThread:54670 [git.py:repo():33] git repository is invalid
+2022-04-05 23:49:27,376 DEBUG   HandlerThread:54670 [meta.py:_save_pip():55] save pip
+2022-04-05 23:49:27,377 DEBUG   HandlerThread:54670 [meta.py:_save_pip():69] save pip done
+2022-04-05 23:49:27,377 DEBUG   HandlerThread:54670 [meta.py:probe():249] probe done
+2022-04-05 23:49:27,383 DEBUG   SenderThread:54670 [sender.py:send():235] send: files
+2022-04-05 23:49:27,384 INFO    SenderThread:54670 [sender.py:_save_file():947] saving file wandb-metadata.json with policy now
+2022-04-05 23:49:27,393 DEBUG   HandlerThread:54670 [handler.py:handle_request():141] handle_request: stop_status
+2022-04-05 23:49:27,394 DEBUG   SenderThread:54670 [sender.py:send_request():249] send_request: stop_status
+2022-04-05 23:49:27,512 DEBUG   SenderThread:54670 [sender.py:send():235] send: telemetry
+2022-04-05 23:49:27,595 INFO    Thread-7  :54670 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220405_234922-3431tjju/files/wandb-metadata.json
+2022-04-05 23:49:27,595 INFO    Thread-7  :54670 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220405_234922-3431tjju/files/output.log
+2022-04-05 23:49:27,595 INFO    Thread-7  :54670 [dir_watcher.py:_on_file_created():217] file/dir created: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220405_234922-3431tjju/files/requirements.txt
+2022-04-05 23:49:28,580 INFO    Thread-11 :54670 [upload_job.py:push():137] Uploaded file /var/folders/4b/njh3297145v5b_k802dt0_h00000gn/T/tmpjy4r066ewandb/1tnhdlcr-wandb-metadata.json
+2022-04-05 23:49:29,600 INFO    Thread-7  :54670 [dir_watcher.py:_on_file_modified():230] file/dir modified: /Users/bingqianlu/Desktop/fednas/FedNAS-master/wandb/run-20220405_234922-3431tjju/files/output.log
