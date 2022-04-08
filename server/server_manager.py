@@ -114,9 +114,9 @@ class ServerMananger(Observer):
             comm.bcast (tree structure) is faster than a loop send/receive operation:
             https://mpitutorial.com/tutorials/mpi-broadcast-and-collective-communication/
             """
-            for process_id in range(1, self.size):
-                self.__send_model_to_client_message(process_id, global_model_params, global_arch_params)
-            # self.__broadcast_model_to_client_message(global_model_params, global_arch_params)
+#            for process_id in range(1, self.size):
+#                self.__send_model_to_client_message(process_id, global_model_params, global_arch_params)
+            self.__broadcast_model_to_client_message(global_model_params, global_arch_params)
 
     def __send_model_to_client_message(self, process_id, global_model_params, global_arch_params):
         msg = MPIMessage()
@@ -137,10 +137,13 @@ class ServerMananger(Observer):
         msg.add(MPIMessage.MSG_ARG_KEY_MODEL_PARAMS, global_model_params)
         msg.add(MPIMessage.MSG_ARG_KEY_ARCH_PARAMS, global_arch_params)
         logging.info("__broadcast_model_to_client_message. MSG_TYPE_S2C_SYNC_MODEL_TO_CLIENT. bcast")
-        self.com_manager.send_broadcast_collective_message(msg)
+        #self.com_manager.send_broadcast_collective_message(msg)
+        for client in self.all_client:
+            client.receive_message(MPIMessage.MSG_TYPE_S2C_SYNC_MODEL_TO_CLIENT, msg)
 
     def __finish(self):
         logging.info("__finish server")
         self.com_manager.stop_receive_message()
         logging.info("sys.exit(0)")
         sys.exit()
+        

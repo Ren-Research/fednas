@@ -119,7 +119,8 @@ def init_server(args, comm, rank, size, round_num):
     logging.info("test_dl_global number = " + str(len(test_global)))
 
     # aggregator
-    client_num = size - 1
+    #client_num = size - 1
+    client_num = args.client_number
     aggregator = FedNASAggregator(train_global, test_global, all_train_data_num, client_num, device, args)
 
     # start the distributed training
