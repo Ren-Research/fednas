@@ -89,12 +89,12 @@ def add_args(parser):
 
 def init_server(args, comm, rank, size, round_num):
     # machine learning experiment tracking platform: https://www.wandb.com/
-#    wandb.init(
-#        project="federated_nas",
-#        name="FedNAS(d)" + str(args.partition) + "r" + str(args.comm_round) + "-e" + str(args.epochs) + "-lr" + str(
-#            args.learning_rate),
-#        config=args
-#    )
+    wandb.init(
+        project="federated_nas",
+        name="FedNAS(d)" + str(args.partition) + "r" + str(args.comm_round) + "-e" + str(args.epochs) + "-lr" + str(
+            args.learning_rate),
+        config=args
+    )
 
     # load data
     logging.info("load dataset")
