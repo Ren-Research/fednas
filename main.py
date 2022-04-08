@@ -87,7 +87,7 @@ def add_args(parser):
     return args
 
 
-def init_server(args, comm, rank, size, round_num, client):
+def init_server(args, comm, rank, size, round_num):
     # machine learning experiment tracking platform: https://www.wandb.com/
 #    wandb.init(
 #        project="federated_nas",
@@ -123,11 +123,13 @@ def init_server(args, comm, rank, size, round_num, client):
     aggregator = FedNASAggregator(train_global, test_global, all_train_data_num, client_num, device, args)
 
     # start the distributed training
-    server_manager = ServerMananger(args, comm, rank, size, round_num, aggregator, client)
-    server_manager.run()
+    server_manager = ServerMananger(args, comm, rank, size, round_num, aggregator)
+    #server_manager.run()
+    
+    return aggregator, server_manager
 
 
-def init_client(args, comm, rank, size, round_num, seed):
+def init_client(args, comm, rank, size, round_num, seed, server):
     # to make sure each client has the same initial weight
     torch.manual_seed(seed)
 
@@ -149,28 +151,36 @@ def init_client(args, comm, rank, size, round_num, seed):
     print(net_dataidx_map)
 
     all_train_data_num = sum([len(net_dataidx_map[r]) for r in range(args.client_number)])
-    dataidxs = net_dataidx_map[client_ID]
-    # logging.info("rank = %d, dataidxs = %s" % (rank, dataidxs))
-    local_sample_number = len(dataidxs)
-    logging.info("rank = %d, local_sample_number = %d" % (rank, local_sample_number))
-
-    split = int(np.floor(0.5 * local_sample_number))  # split index
-    train_idxs = dataidxs[0:split]
-    test_idxs = dataidxs[split:local_sample_number]
-
-    train_local, _ = get_dataloader(args.dataset, args_datadir, args.batch_size, args.batch_size, train_idxs)
-    logging.info("rank = %d, batch_num_train_local = %d" % (rank, len(train_local)))
-
-    test_local, _ = get_dataloader(args.dataset, args_datadir, args.batch_size, args.batch_size, test_idxs)
-    logging.info("rank = %d, batch_num_test_local = %d" % (rank, len(test_local)))
-
-    # 2. initialize the trainer
-    trainer = FedNASTrainer(client_ID, train_local, test_local, local_sample_number, all_train_data_num, device, args)
-
-    # 3. start the distributed training
-    client_manager = ClientMananger(args, comm, rank, size, round_num, trainer)
-    #client_manager.run()
-    return client_manager
+    all_client_manager = []
+    
+    for client_ID in range(args.client_number):
+        rank = client_ID + 1
+        
+        dataidxs = net_dataidx_map[client_ID]
+        # logging.info("rank = %d, dataidxs = %s" % (rank, dataidxs))
+        local_sample_number = len(dataidxs)
+        logging.info("rank = %d, local_sample_number = %d" % (rank, local_sample_number))
+    
+        split = int(np.floor(0.5 * local_sample_number))  # split index
+        train_idxs = dataidxs[0:split]
+        test_idxs = dataidxs[split:local_sample_number]
+    
+        train_local, _ = get_dataloader(args.dataset, args_datadir, args.batch_size, args.batch_size, train_idxs)
+        logging.info("rank = %d, batch_num_train_local = %d" % (rank, len(train_local)))
+    
+        test_local, _ = get_dataloader(args.dataset, args_datadir, args.batch_size, args.batch_size, test_idxs)
+        logging.info("rank = %d, batch_num_test_local = %d" % (rank, len(test_local)))
+    
+        # 2. initialize the trainer
+        trainer = FedNASTrainer(client_ID, train_local, test_local, local_sample_number, all_train_data_num, device, args)
+    
+        # 3. start the distributed training
+        client_manager = ClientMananger(args, comm, rank, size, round_num, trainer, server)
+        #client_manager.run()
+        
+        all_client_manager.append(client_manager)
+        
+    return all_client_manager
 
 
 def init_training_device(process_ID, size):
@@ -226,12 +236,8 @@ if __name__ == "__main__":
 #    else:
 #        init_client(args, comm, rank, size, round_num, client_seed)
     
-    import queue
-    server_send_queue = queue.Queue(0)
-    print("server_send_queue = queue.Queue(0)", server_send_queue)
-    
-    rank = 1
-    
-    client = init_client(args, comm, rank, size, round_num, client_seed)
-    init_server(args, comm, rank, size, round_num, client)
+    aggregator, server_manager = init_server(args, comm, rank, size, round_num)
+    all_client_manager = init_client(args, comm, rank, size, round_num, client_seed, server_manager)
+    server_manager.set_all_client(all_client_manager)
+    server_manager.run()
     

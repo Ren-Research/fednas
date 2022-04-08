@@ -9,7 +9,7 @@ from communication.observer import Observer
 
 class ClientMananger(Observer):
 
-    def __init__(self, args, comm, rank, size, round_num, trainer):
+    def __init__(self, args, comm, rank, size, round_num, trainer, server):
         self.args = args
         self.size = size
         self.rank = rank
@@ -19,6 +19,8 @@ class ClientMananger(Observer):
         self.trainer = trainer
         self.num_rounds = round_num
         self.round_idx = 0
+        
+        self.server = server
 
     def receive_message(self, msg_type, msg_params) -> None:
         logging.info("receive_message. rank_id = %d, msg_type = %s. msg_params = %s" % (
@@ -115,7 +117,8 @@ class ClientMananger(Observer):
         msg.add(MPIMessage.MSG_ARG_KEY_ARCH_PARAMS, alphas)
         msg.add(MPIMessage.MSG_ARG_KEY_LOCAL_TRAINING_ACC, valid_acc)
         msg.add(MPIMessage.MSG_ARG_KEY_LOCAL_TRAINING_LOSS, valid_loss)
-        self.com_manager.send_message(msg)
+        #self.com_manager.send_message(msg)
+        self.server.receive_message(MPIMessage.MSG_TYPE_C2S_SEND_MODEL_TO_SERVER, msg)
 
     def __finish(self):
         logging.info("#######finished########### rank = %d" % self.rank)

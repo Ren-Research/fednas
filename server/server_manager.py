@@ -10,7 +10,7 @@ from communication.observer import Observer
 
 class ServerMananger(Observer):
 
-    def __init__(self, args, comm, rank, size, round_num, aggregator, client):
+    def __init__(self, args, comm, rank, size, round_num, aggregator):
         self.args = args
         self.size = size
         self.rank = rank
@@ -21,7 +21,10 @@ class ServerMananger(Observer):
 
         self.aggregator = aggregator
         
-        self.client = client
+        self.all_client = None
+        
+    def set_all_client(self, all_client):
+        self.all_client = all_client
 
     def receive_message(self, msg_type, msg_params) -> None:
         logging.info("receive_message. rank_id = %d, msg_type = %s. msg_params = %s" % (
@@ -72,7 +75,8 @@ class ServerMananger(Observer):
         msg.add(MPIMessage.MSG_ARG_KEY_ARCH_PARAMS, global_arch_params)
         logging.info("__broadcast_initial_config_to_client. MSG_TYPE_S2C_INIT_CONFIG.")
         #self.com_manager.send_broadcast_collective_message(msg)
-        self.client.receive_message(MPIMessage.MSG_TYPE_S2C_INIT_CONFIG, msg)
+        for client in self.all_client:
+            client.receive_message(MPIMessage.MSG_TYPE_S2C_INIT_CONFIG, msg)
 
     def __handle_msg_server_receive_model_from_client_opt_send(self, msg_params):
         process_id = msg_params.get(MPIMessage.MSG_ARG_KEY_SENDER)
