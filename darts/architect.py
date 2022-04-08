@@ -19,6 +19,7 @@ class Architect(object):
         self.criterion = criterion
 
         arch_parameters = self.model.arch_parameters()
+        #arch_parameters = [i.clone().detach().requires_grad_(True) for i in arch_parameters]
         self.optimizer = torch.optim.Adam(
             arch_parameters,
             lr=args.arch_learning_rate, betas=(0.5, 0.999),
